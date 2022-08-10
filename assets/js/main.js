@@ -101,7 +101,7 @@ function clickBtn() {
             if (todoList.childElementCount !=0) {
                try {
                 for (let i = 0; i < getTodoItem.length; i++) {
-                    setTodoUl.removeChild(setTodoUl.lastElementChild)
+                    getTodoItem[i].remove()
                 }
                } catch (error) {
                  console.log(error);
