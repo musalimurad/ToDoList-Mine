@@ -68,6 +68,16 @@ setTodoUl.id='todoUl'
 let todoList=document.getElementById('todoUl')
 setTodoUl.style.marginTop='20px'
 
+
+if (window.localStorage.getItem("getItem") != null) {
+    var itemArray = [window.localStorage.getItem("getItem")]
+}
+else{
+    var itemArray = []
+}
+
+
+
 function clickBtn() {
     if (getTodoInput.value !='') {
         let setTodoLi=document.createElement('li')
@@ -80,8 +90,16 @@ function clickBtn() {
         setTodoLi.className='todoItem'
         let getTodoItem = document.querySelectorAll(".todoItem")
         let getInputValue= getTodoInput.value
-
+       
         getTodoItem[getTodoItem.length - 1].textContent =  getInputValue
+       
+        itemArray.push(getInputValue)
+        
+    
+        
+            window.localStorage.setItem("getItem", JSON.stringify(itemArray))
+     
+        console.log(itemArray);
         getTodoInput.value = ""
         todoList.style.listStyle = "decimal"
         getTodoItem[getTodoItem.length - 1].style.fontSize = "23px"
@@ -110,3 +128,15 @@ function clickBtn() {
         }
     }
 }
+
+// let getTodoItem =window.localStorage.getItem("getItem")
+
+// for (let x = 0; x < getTodoItem; x++) {
+//    let getLi = document.createElement("li")
+//    getLi.className = "todoItem"
+//    todoList.appendChild(getLi)
+//    getLi.textContent = getTodoItem[x]
+// }
+
+
+
